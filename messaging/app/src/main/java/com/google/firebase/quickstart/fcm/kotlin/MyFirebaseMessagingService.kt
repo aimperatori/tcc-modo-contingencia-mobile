@@ -168,7 +168,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         }*/
 
         val callIntent = Intent(Intent.ACTION_DIAL)
-        callIntent.data = Uri.parse("54984078154")
+        callIntent.data = Uri.parse("tel:54984078154")
 //        startActivity(callIntent)
 
         val callPendingIntent: PendingIntent =

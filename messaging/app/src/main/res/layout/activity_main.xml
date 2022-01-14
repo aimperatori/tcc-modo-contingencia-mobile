@@ -39,4 +39,10 @@
         android:layout_gravity="center_horizontal"
         android:text="@string/log_token" />
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:text="Página principal" />
+
 </LinearLayout>

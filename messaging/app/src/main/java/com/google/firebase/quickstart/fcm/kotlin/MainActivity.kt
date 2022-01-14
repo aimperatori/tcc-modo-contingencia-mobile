@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         }
         // [END handle_data_extras]
 
+
+
         binding.subscribeButton.setOnClickListener {
             Log.d(TAG, "Subscribing to weather topic")
             // [START subscribe_topics]
