@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.ktx.messaging
 import android.content.Intent
 import com.example.homeassistantoff.List.ListActivity
+import com.example.homeassistantoff.collectedData.CollectedDataActivity
+import com.example.homeassistantoff.utils.Constants
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val logTokenBtn = findViewById<Button>(R.id.logTokenBtn)
+
+        Toast.makeText(baseContext, "TESTE MAIN", Toast.LENGTH_LONG).show()
+        Log.e(Constants.TAG, "TESTE MAIN")
 
         logTokenBtn.setOnClickListener {
             // Get token
@@ -45,6 +50,14 @@ class MainActivity : AppCompatActivity() {
 
         listBtn.setOnClickListener {
             val intent = Intent(this, ListActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        val collectedDataBtn = findViewById<Button>(R.id.collectedDataBtn)
+
+        collectedDataBtn.setOnClickListener {
+            val intent = Intent(this, CollectedDataActivity::class.java)
             startActivity(intent)
         }
     }
