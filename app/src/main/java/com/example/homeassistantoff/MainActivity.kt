@@ -9,7 +9,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.ktx.messaging
 import android.content.Intent
-import com.example.homeassistantoff.List.ListActivity
 import com.example.homeassistantoff.collectedData.CollectedDataActivity
 import com.example.homeassistantoff.utils.Constants
 
@@ -46,12 +45,12 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        val listBtn = findViewById<Button>(R.id.listBtn)
+        val listBtn = findViewById<Button>(R.id.filesBtn)
 
-        listBtn.setOnClickListener {
-            val intent = Intent(this, ListActivity::class.java)
-            startActivity(intent)
-        }
+//        listBtn.setOnClickListener {
+//            val intent = Intent(this, ListActivity::class.java)
+//            startActivity(intent)
+//        }
 
 
         val collectedDataBtn = findViewById<Button>(R.id.collectedDataBtn)

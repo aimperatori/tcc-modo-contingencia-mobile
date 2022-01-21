@@ -8,10 +8,13 @@ import com.example.homeassistantoff.data.CollectedData
 import com.example.homeassistantoff.data.FirebaseCallback
 import com.example.homeassistantoff.data.Response
 import com.example.homeassistantoff.utils.Constants.COLLECTEDDATA_REF
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.flow.flow
 
 class CollectedDataRepository(
     private val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference,
-    private val collectedDataRef: DatabaseReference = rootRef.child(COLLECTEDDATA_REF)
+    private val collectedDataRef: DatabaseReference = rootRef.child(COLLECTEDDATA_REF),
 ) {
     fun getResponseFromRealtimeDatabaseUsingCallback(callback: FirebaseCallback) {
         collectedDataRef.get().addOnCompleteListener { task ->

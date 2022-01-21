@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeAssistantOff">
         <activity
-            android:name=".List.ListActivity"
+            android:name=".collectedFile.CollectedFileActivity"
             android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
