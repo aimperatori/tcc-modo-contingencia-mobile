@@ -11,7 +11,7 @@
         android:theme="@style/Theme.HomeAssistantOff">
         <activity
             android:name=".collectedFile.CollectedFileActivity"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".collectedData.CollectedDataActivity"
             android:exported="true" />
         <activity
             android:name=".collectedData.CollectedDataActivity"

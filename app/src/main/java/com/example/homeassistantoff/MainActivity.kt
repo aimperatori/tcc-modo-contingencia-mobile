@@ -21,9 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         val logTokenBtn = findViewById<Button>(R.id.logTokenBtn)
 
-        Toast.makeText(baseContext, "TESTE MAIN", Toast.LENGTH_LONG).show()
-        Log.e(Constants.TAG, "TESTE MAIN")
-
         logTokenBtn.setOnClickListener {
             // Get token
             // [START log_reg_token]

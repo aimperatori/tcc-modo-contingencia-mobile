@@ -6,41 +6,51 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
-import android.widget.ImageView
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.homeassistantoff.R
-import com.example.homeassistantoff.data.FirebaseCallback
-import com.example.homeassistantoff.data.FirebaseFilesCallback
-import com.example.homeassistantoff.data.Response
-import com.example.homeassistantoff.data.ResponseFiles
-import com.example.homeassistantoff.utils.Constants.DATA_INDEX
+
 import com.example.homeassistantoff.utils.Constants.TAG
 import com.example.homeassistantoff.utils.Helper
+import androidx.lifecycle.ViewModelProvider
+import com.example.homeassistantoff.data.*
+import com.example.homeassistantoff.utils.Constants.COLLECTEDDATA_SELECTED
+
 
 class CollectedFileActivity : AppCompatActivity() {
 
     private lateinit var viewModel: CollectedFileViewModel
     private lateinit var listView: ListView
+    private var collectedData : CollectedData? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_collectedfiles)
+
+        collectedData = intent?.getParcelableExtra(COLLECTEDDATA_SELECTED)!!
+
+        Toast.makeText(baseContext, collectedData?.createdDateTime + collectedData?.movement?.movDetected, Toast.LENGTH_LONG).show()
+
+
+
+        listView = findViewById<ListView>(R.id.collectedFile_listView)
+
+        this.print(collectedData!!)
+
+//        viewModel = ViewModelProvider(this, CollectedFileViewModelFactory(index.toString())).get(
+//                CollectedFileViewModel::class.java
+//            )
+
+
 //        viewModel = ViewModelProvider(this).get(CollectedFileViewModel::class.java)
+//        viewModel = CollectedFileViewModel(index!!)
 
-        val index = intent?.getStringExtra(DATA_INDEX)
-
-        viewModel = CollectedFileViewModel(index!!)
-
-        getResponseUsingCallback()
+//        getResponseUsingCallback()
 //            getResponseUsingLiveData()
 //            getResponseUsingCoroutines()
 
-        listView = findViewById<ListView>(R.id.collectedFile_listView)
+
     }
 
     private fun getResponseUsingCallback() {
@@ -63,23 +73,20 @@ class CollectedFileActivity : AppCompatActivity() {
         })
     }
 
-    private fun print(response: ResponseFiles) {
+    private fun print(collectedData: CollectedData) {
 
-        listView.adapter = MyCustomAdapter(this, response)
+        listView.adapter = MyCustomAdapter(this, collectedData.movement?.files!!)
 
-        response.exception?.message?.let {
-            Log.e(TAG, it)
-        }
     }
 
-    private class MyCustomAdapter(context: Context, response: ResponseFiles) : BaseAdapter() {
+    private class MyCustomAdapter(context: Context, files: List<Files>) : BaseAdapter() {
 
         private val mContext: Context = context
-        private val mResponse: ResponseFiles = response
+        private val mFiles: List<Files> = files
 
         // numero de linhas
         override fun getCount(): Int {
-            return mResponse.files?.size!!
+            return mFiles.size!!
         }
 
         override fun getItem(p0: Int): Any {
@@ -92,9 +99,9 @@ class CollectedFileActivity : AppCompatActivity() {
 
         // render each line
         override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-            val rowList = LayoutInflater.from(mContext).inflate(R.layout.activity_collectedfiles, p2, false)
+            val rowList = LayoutInflater.from(mContext).inflate(R.layout.rowfiles_listview, p2, false)
 
-            val row = mResponse.files?.get(p0)
+            val row = mFiles[p0]
 
             // Image
             val imageView = rowList.findViewById<ImageView>(R.id.imageView)

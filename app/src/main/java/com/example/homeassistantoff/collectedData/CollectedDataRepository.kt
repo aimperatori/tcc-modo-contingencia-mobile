@@ -1,5 +1,7 @@
 package com.example.homeassistantoff.collectedData
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -22,9 +24,13 @@ class CollectedDataRepository(
             if (task.isSuccessful) {
                 val result = task.result
                 result?.let {
+
+//                    Log.d("DEBUG", it.children.index
+
                     response.collectedData = result.children.map { snapShot ->
                         snapShot.getValue(CollectedData::class.java)!!
                     }
+
                 }
             } else {
                 response.exception = task.exception

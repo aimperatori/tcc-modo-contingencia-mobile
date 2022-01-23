@@ -26,6 +26,8 @@ import android.graphics.Bitmap
 import android.os.NetworkOnMainThreadException
 import com.bumptech.glide.Glide
 import com.example.homeassistantoff.collectedFile.CollectedFileActivity
+import com.example.homeassistantoff.utils.Constants
+import com.example.homeassistantoff.utils.Constants.COLLECTEDDATA_SELECTED
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -84,6 +86,11 @@ class CollectedDataActivity : AppCompatActivity() {
         listView.setOnItemClickListener { parent, view, position, id ->
             val element = listView.adapter.getItemId(position) // The item that was clicked
             val intent = Intent(this, CollectedFileActivity::class.java)
+
+            intent.putExtra(COLLECTEDDATA_SELECTED, response.collectedData?.get(element.toInt()))
+//            intent.putExtra(FILES_JSON, response.collectedData?.get(element.toInt())?.movement?.files.toString())
+
+
             startActivity(intent)
         }
 
@@ -124,9 +131,6 @@ class CollectedDataActivity : AppCompatActivity() {
         // render each line
         override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
             val rowList = LayoutInflater.from(mContext).inflate(R.layout.row_listview, p2, false)
-
-
-
 
             val row = mResponse.collectedData?.get(p0)
 

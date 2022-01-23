@@ -6,5 +6,5 @@ object Constants {
     const val MOVEMENT_REF = "movement"
     const val FILES_REF = "files"
 
-    const val DATA_INDEX = "indexOfFiles"
+    const val COLLECTEDDATA_SELECTED = "collectedData_selected"
 }
