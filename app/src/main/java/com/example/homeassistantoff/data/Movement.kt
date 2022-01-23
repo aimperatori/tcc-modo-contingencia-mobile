@@ -7,11 +7,11 @@ data class Movement (
     var movDetected : Boolean? = false,
     var files : List<Files>? = null
 ) : Parcelable {
+
     constructor(parcel: Parcel) : this(
         parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
         parcel.readValue(Files::class.java.classLoader) as? List<Files>,
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(movDetected)

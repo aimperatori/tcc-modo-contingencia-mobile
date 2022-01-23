@@ -1,36 +1,44 @@
 package com.example.homeassistantoff.collectedData
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.tasks.await
 import com.example.homeassistantoff.data.CollectedData
 import com.example.homeassistantoff.data.FirebaseCallback
 import com.example.homeassistantoff.data.Response
 import com.example.homeassistantoff.utils.Constants.COLLECTEDDATA_REF
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.flow.flow
+import com.google.firebase.database.*
 
 class CollectedDataRepository(
     private val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference,
     private val collectedDataRef: DatabaseReference = rootRef.child(COLLECTEDDATA_REF),
 ) {
+
+    fun getResponseOnDataChange(callback: FirebaseCallback) {
+        collectedDataRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val response = Response()
+                response.collectedData = dataSnapshot.children.map { snapShot ->
+                    snapShot.getValue(CollectedData::class.java)!!
+                }
+                callback.onResponse(response)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("CollectedDataRepository", "loadPost:onCancelled", error.toException())
+            }
+        })
+    }
+
     fun getResponseFromRealtimeDatabaseUsingCallback(callback: FirebaseCallback) {
         collectedDataRef.get().addOnCompleteListener { task ->
             val response = Response()
             if (task.isSuccessful) {
                 val result = task.result
                 result?.let {
-
-//                    Log.d("DEBUG", it.children.index
-
                     response.collectedData = result.children.map { snapShot ->
                         snapShot.getValue(CollectedData::class.java)!!
                     }
-
                 }
             } else {
                 response.exception = task.exception

@@ -10,6 +10,11 @@ import kotlinx.coroutines.Dispatchers
 class CollectedDataViewModel (
     private val repository: CollectedDataRepository = CollectedDataRepository()
 ): ViewModel() {
+
+    fun getResponseOnDataChange(callback: FirebaseCallback) {
+        repository.getResponseOnDataChange(callback)
+    }
+
     fun getResponseUsingCallback(callback: FirebaseCallback) {
         repository.getResponseFromRealtimeDatabaseUsingCallback(callback)
     }

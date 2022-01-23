@@ -5,7 +5,6 @@ import android.os.Parcelable
 
 
 data class CollectedData(
-    var id : Int = 0,
     var createdDateTime : String? = "",
     var temp : Int? = 0,
     var humidity : Int? = 0,
@@ -14,17 +13,14 @@ data class CollectedData(
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
         parcel.readString(),
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readValue(Movement::class.java.classLoader) as? Movement,
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
         parcel.writeString(createdDateTime)
         parcel.writeValue(temp)
         parcel.writeValue(humidity)

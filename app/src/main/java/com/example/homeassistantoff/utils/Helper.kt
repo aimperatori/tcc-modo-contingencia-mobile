@@ -5,14 +5,11 @@ import java.text.SimpleDateFormat
 class Helper {
 
     companion object {
-        fun formatDateTime(_dateTime : String) : String {
-
+        fun formatDateTime(_dateTime: String): String {
             val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
 
-            val dateTimeFormated: String = formatter.format(parser.parse(_dateTime))
-
-            return dateTimeFormated
+            return formatter.format(parser.parse(_dateTime))
         }
 
         fun booleanToNoYes(_bool : Boolean) : String {
