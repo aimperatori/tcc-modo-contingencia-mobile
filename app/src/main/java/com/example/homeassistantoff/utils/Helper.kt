@@ -3,7 +3,6 @@ package com.example.homeassistantoff.utils
 import java.text.SimpleDateFormat
 
 class Helper {
-
     companion object {
         fun formatDateTime(_dateTime: String): String {
             val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
@@ -19,7 +18,13 @@ class Helper {
                 "Não"
             }
         }
+
+        fun isImage(_extension : String) : Boolean {
+            return listOf(".png", ".jpg", "jpeg").contains(_extension)
+        }
+
+        fun isVideo(_extension : String) : Boolean {
+            return listOf(".mp4").contains(_extension)
+        }
     }
-
-
 }

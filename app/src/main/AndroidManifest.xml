@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeAssistantOff">
+
         <activity
-            android:name=".collectedFile.CollectedFileActivity"
+            android:name=".pager.ViewPagerActivity"
             android:parentActivityName=".collectedData.CollectedDataActivity"
             android:exported="true" />
         <activity

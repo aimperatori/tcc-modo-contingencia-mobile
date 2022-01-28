@@ -11,7 +11,7 @@ import com.google.firebase.database.*
 
 class CollectedDataRepository(
     private val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference,
-    private val collectedDataRef: DatabaseReference = rootRef.child(COLLECTEDDATA_REF),
+    private val collectedDataRef: Query = rootRef.child(COLLECTEDDATA_REF).orderByChild("createdDateTime"),
 ) {
 
     fun getResponseOnDataChange(callback: FirebaseCallback) {
