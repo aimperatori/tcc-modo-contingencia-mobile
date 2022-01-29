@@ -13,10 +13,14 @@
         <entry key="app/src/main/res/layout/fragment_collected_data.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/fragment_image.xml" value="0.20153985507246377" />
         <entry key="app/src/main/res/layout/image_listview.xml" value="0.2164855072463768" />
+        <entry key="app/src/main/res/layout/listpage_collecteddata.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/listpage_collecteddata_row.xml" value="0.21829710144927536" />
         <entry key="app/src/main/res/layout/row_listview.xml" value="0.24954710144927536" />
         <entry key="app/src/main/res/layout/rowfiles_listview.xml" value="0.2115036231884058" />
-        <entry key="app/src/main/res/layout/view_pager.xml" value="0.22327898550724637" />
+        <entry key="app/src/main/res/layout/toolbar.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/view_pager.xml" value="0.1" />
         <entry key="app/src/main/res/layout/view_pager_page.xml" value="0.20697463768115942" />
+        <entry key="app/src/main/res/layout/view_pager_video.xml" value="0.21829710144927536" />
       </map>
     </option>
   </component>
@@ -28,5 +32,12 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="HomeAssistantOff.app" />
+      </set>
+    </option>
   </component>
 </project>

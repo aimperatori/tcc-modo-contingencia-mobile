@@ -15,12 +15,8 @@ import com.example.homeassistantoff.data.FirebaseCallback
 import com.example.homeassistantoff.data.Response
 import com.example.homeassistantoff.utils.Constants.TAG
 import com.example.homeassistantoff.utils.Helper
-import com.example.homeassistantoff.collectedFile.CollectedFileActivity
 import com.example.homeassistantoff.utils.Constants.COLLECTEDDATA_SELECTED
 import com.example.homeassistantoff.pager.ViewPagerActivity
-
-
-
 
 
 class CollectedDataActivity : AppCompatActivity() {
@@ -29,7 +25,7 @@ class CollectedDataActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_collecteddata)
+        setContentView(R.layout.listpage_collecteddata)
 
         viewModel = ViewModelProvider(this).get(CollectedDataViewModel::class.java)
 
@@ -78,14 +74,8 @@ class CollectedDataActivity : AppCompatActivity() {
         listView.setOnItemClickListener { _, _, position, _ ->
             val element = listView.adapter.getItemId(position) // The item that was clicked
             val intent = Intent(this, ViewPagerActivity::class.java)
-
             intent.putExtra(COLLECTEDDATA_SELECTED, response.collectedData?.get(element.toInt()))
-
             startActivity(intent)
-
-//            val intent = Intent(this, )
-//            startActivity(intent)
-
         }
 
         response.exception?.let { exception ->
@@ -116,7 +106,7 @@ class CollectedDataActivity : AppCompatActivity() {
 
         // render each line
         override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-            val rowList = LayoutInflater.from(mContext).inflate(R.layout.row_listview, p2, false)
+            val rowList = LayoutInflater.from(mContext).inflate(R.layout.listpage_collecteddata_row, p2, false)
 
             // DESCENDING
             var index = mResponse.collectedData?.size!!-1 - p0
