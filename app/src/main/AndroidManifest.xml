@@ -9,24 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeAssistantOff">
-
-        <activity
-            android:name=".pager.ViewPagerActivity"
-            android:parentActivityName=".collectedData.CollectedDataActivity"
-            android:exported="true" />
-        <activity
-            android:name=".collectedData.CollectedDataActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.HomeAssistantOff.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HARequest.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".pager.ViewPagerActivity"
+            android:exported="true"
+            android:parentActivityName=".collectedData.CollectedDataActivity" />
+        <activity
+            android:name=".collectedData.CollectedDataActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
 
         <service
             android:name=".Messaging.MyFirebaseMessagingService"
@@ -35,6 +40,8 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <receiver android:name=".HARequest.HARequestAlarmReceiver" />
     </application>
 
 </manifest>
