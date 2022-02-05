@@ -55,16 +55,16 @@ class CollectedDataActivity : AppCompatActivity() {
     }
 
     private fun getResponseUsingLiveData() {
-        viewModel.getResponseUsingLiveData().observe(this, {
+        viewModel.getResponseUsingLiveData().observe(this) {
             Log.d("ACTIVITY", "Modou o dado - live data")
             renderUI(it)
-        })
+        }
     }
 
     private fun getResponseUsingCoroutines() {
-        viewModel.responseLiveData.observe(this, {
+        viewModel.responseLiveData.observe(this) {
             renderUI(it)
-        })
+        }
     }
 
     private fun renderUI(response: Response) {

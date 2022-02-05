@@ -3,6 +3,7 @@ package com.example.homeassistantoff.HARequest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.util.Log
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
@@ -11,7 +12,34 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 
-class HARequestAlarmReceiver : BroadcastReceiver() {
+open class HARequestAlarmReceiver() : BroadcastReceiver() {
+//class HARequestAlarmReceiver : BroadcastReceiver() {
+
+//    private lateinit var listener: HARequestBroadcastListener
+//
+//    public HARequestAlarmReceiver() {
+//        super
+//    }
+//
+//    fun HARequestAlarmReceiver(_listener: HARequestBroadcastListener) {
+//        listener = _listener
+//    }
+
+/*
+    public constructor(
+        owner: ViewModelStoreOwner
+    ) : this(owner.viewModelStore, ViewModelProvider.AndroidViewModelFactory.defaultFactory(owner))
+
+    public constructor(owner: ViewModelStoreOwner, factory: ViewModelProvider.Factory) : this(
+        owner.viewModelStore,
+        factory
+    )
+*/
+
+//    public constructor(_listener: HARequestBroadcastListener?) : this(
+//        _listener
+//    )
+
 
     override fun onReceive(context: Context?, p1: Intent?) {
 
@@ -26,8 +54,22 @@ class HARequestAlarmReceiver : BroadcastReceiver() {
             Method.GET, url, JSONObject(),
             Response.Listener { response ->
                 Log.d("Alarme", "Response: %s".format(response.toString()))
+
+                val intent = Intent("online")
+                val extras = Bundle()
+                extras.putString("text", "tá on carai")
+                intent.putExtras(extras)
+                context!!.sendBroadcast(intent)
+
             }, Response.ErrorListener { error ->
                 Log.d("Alarme", "Error: %s".format(error.toString()))
+
+                val intent = Intent("offline")
+                val extras = Bundle()
+                extras.putString("text", "tá off carai")
+                intent.putExtras(extras)
+                context!!.sendBroadcast(intent)
+
             }) {
                 @Throws(AuthFailureError::class)
                 override fun getHeaders(): Map<String, String> {
