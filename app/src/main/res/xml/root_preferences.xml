@@ -4,18 +4,18 @@
 
         <SwitchPreferenceCompat
             app:key="active"
-            app:title="Requisições pelo app" />
+            app:title="@string/app_request_config" />
 
         <EditTextPreference
             app:dependency="active"
             app:key="urlHomeAssistant"
-            app:title="URL"
+            app:title="@string/url"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
             app:dependency="active"
             app:key="longLiveToken"
-            app:title="Long-live Token"
+            app:title="@string/long_live_token"
             app:useSimpleSummaryProvider="true" />
 
 <!--        <ListPreference-->

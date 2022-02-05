@@ -14,7 +14,7 @@ import com.google.firebase.messaging.ktx.messaging
 import android.content.Intent
 import android.os.SystemClock
 import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
-import com.example.homeassistantoff.HARequest.SettingsActivity
+import com.example.homeassistantoff.Settings.SettingsActivity
 import com.example.homeassistantoff.collectedData.CollectedDataActivity
 
 

@@ -15,7 +15,7 @@ import com.example.homeassistantoff.data.FirebaseCallback
 import com.example.homeassistantoff.data.Response
 import com.example.homeassistantoff.utils.Constants.TAG
 import com.example.homeassistantoff.utils.Helper
-import com.example.homeassistantoff.utils.Constants.COLLECTEDDATA_SELECTED
+import com.example.homeassistantoff.utils.Constants.COLLECTED_DATA_SELECTED
 import com.example.homeassistantoff.pager.ViewPagerActivity
 
 
@@ -40,7 +40,6 @@ class CollectedDataActivity : AppCompatActivity() {
     private fun getResponseOnDataChange() {
         viewModel.getResponseOnDataChange(object : FirebaseCallback {
             override fun onResponse(response: Response) {
-                Log.d("ACTIVITY", "Modou o dado")
                 renderUI(response)
             }
         })
@@ -56,7 +55,6 @@ class CollectedDataActivity : AppCompatActivity() {
 
     private fun getResponseUsingLiveData() {
         viewModel.getResponseUsingLiveData().observe(this) {
-            Log.d("ACTIVITY", "Modou o dado - live data")
             renderUI(it)
         }
     }
@@ -74,7 +72,7 @@ class CollectedDataActivity : AppCompatActivity() {
         listView.setOnItemClickListener { _, _, position, _ ->
             val element = listView.adapter.getItemId(position) // The item that was clicked
             val intent = Intent(this, ViewPagerActivity::class.java)
-            intent.putExtra(COLLECTEDDATA_SELECTED, response.collectedData?.get(element.toInt()))
+            intent.putExtra(COLLECTED_DATA_SELECTED, response.collectedData?.get(element.toInt()))
             startActivity(intent)
         }
 
@@ -126,7 +124,7 @@ class CollectedDataActivity : AppCompatActivity() {
 
             // Gas and Smoke
             val gasSmokeTextView = rowList.findViewById<TextView>(R.id.gas_smoke)
-            gasSmokeTextView.text = row.gas_smoke.toString() + " ppm"
+            gasSmokeTextView.text = row.gas_smoke.toString() + " "+ R.string.ppm
 
             // Movement
             val movementTextView = rowList.findViewById<TextView>(R.id.movement)

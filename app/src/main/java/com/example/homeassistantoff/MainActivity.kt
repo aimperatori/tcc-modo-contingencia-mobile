@@ -2,7 +2,6 @@ package com.example.homeassistantoff
 
 import android.app.AlarmManager
 import android.app.PendingIntent
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -13,16 +12,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
-import com.example.homeassistantoff.HARequest.HARequestBroadcastListener
+import com.example.homeassistantoff.Settings.SettingsActivity
 import com.example.homeassistantoff.databinding.ActivityMainBinding
+import com.example.homeassistantoff.utils.Constants.OFFLINE
+import com.example.homeassistantoff.utils.Constants.ONLINE
 
 
 class MainActivity : AppCompatActivity() {
@@ -50,51 +49,6 @@ class MainActivity : AppCompatActivity() {
         registerReceiver()
     }
 
-    private fun setupHARequestAlarm() {
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-        val intent = Intent(this, HARequestAlarmReceiver::class.java)
-
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-
-        alarmManager.setInexactRepeating(
-            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime(),
-            (1000 * 5).toLong(), // a cada 5 segundos
-            pendingIntent)
-    }
-
-    private fun registerReceiver() {
-
-        haRequest = object : HARequestAlarmReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                val text = intent?.getStringExtra("text")
-
-                Log.d("Alarme", "TESTEEE MAIN TÀ ON - $text")
-
-                updateUI("Online !!!", true)
-
-            }
-        }
-        registerReceiver(haRequest, IntentFilter("online"))
-
-
-        haRequestOff = object : HARequestAlarmReceiver() {
-            override fun onReceive(context: Context?, intent: Intent?) {
-                val text = intent?.getStringExtra("text")
-
-                Log.d("Alarme", "TESTEEE MAIN TÀ OFF - $text")
-
-                updateUI("OFFline !!!", false)
-
-            }
-        }
-        registerReceiver(haRequestOff, IntentFilter("offline"))
-    }
-
-
-    ///
-
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration)
@@ -109,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.settings -> {
-                val intent = Intent(this, HARequestAlarmReceiver::class.java)
+                val intent = Intent(this, SettingsActivity::class.java)
                 startActivity(intent)
                 true
             }
@@ -117,16 +71,52 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUI(text: String?, status: Boolean) {
-        val statusTextView = this.findViewById<TextView>(R.id.statusText)
-        statusTextView.text = text
+    // !!! REQUEST HOME ASSISTANT !!!
 
-        val statusImg = this.findViewById<ImageView>(R.id.statusImg)
-        if (status) {
-            statusImg.setImageResource(R.mipmap.online)
+    private fun setupHARequestAlarm() {
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(this, HARequestAlarmReceiver::class.java)
+
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+
+        alarmManager.setInexactRepeating(
+            AlarmManager.ELAPSED_REALTIME_WAKEUP,
+            SystemClock.elapsedRealtime(),
+            (1000 * 5).toLong(), // each 5 sec
+            pendingIntent)
+    }
+
+    private fun registerReceiver() {
+        haRequest = object : HARequestAlarmReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                updateUI(getText(R.string.text_home_assistant_online), true)
+            }
         }
-        else {
-            statusImg.setImageResource(R.mipmap.offline)
+        registerReceiver(haRequest, IntentFilter(ONLINE))
+
+
+        haRequestOff = object : HARequestAlarmReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                updateUI(getText(R.string.text_home_assistant_offline), false)
+            }
+        }
+        registerReceiver(haRequestOff, IntentFilter(OFFLINE))
+    }
+
+    private fun updateUI(text: CharSequence?, status: Boolean) {
+        var statusTextView = findViewById<TextView>(R.id.statusText)
+        if (statusTextView != null) {
+            statusTextView.text = text
+        }
+
+        val statusImg = findViewById<ImageView>(R.id.statusImg)
+        if (statusImg != null) {
+            if (status) {
+                statusImg.setImageResource(R.mipmap.online)
+            } else {
+                statusImg.setImageResource(R.mipmap.offline)
+            }
         }
     }
 }

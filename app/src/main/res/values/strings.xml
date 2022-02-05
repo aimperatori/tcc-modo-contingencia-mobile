@@ -32,13 +32,19 @@
     <string name="action_sign_in_short" translatable="false">a</string>
     <string name="prompt_password" translatable="false">a</string>
     <string name="prompt_email" translatable="false">a</string>
-
-
-
-
-
-
-
+    <string name="ppm" translatable="false">ppm</string>
+    <string name="text_home_assistant_offline">Offline</string>
+    <string name="text_home_assistant_online">Online !!!</string>
+    <string name="loading_home_assistant_required">Loading...</string>
+    <string name="created_date_time">Created date time</string>
+    <string name="null_date" translatable="false">0000-00-00 00:00:00</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="gas_smoke">Gas and smoke</string>
+    <string name="movement">Movement</string>
+    <string name="app_request_config">Request from app</string>
+    <string name="url" translatable="false">URL</string>
+    <string name="long_live_token" translatable="false">Long-live Token</string>
 
 
 </resources>

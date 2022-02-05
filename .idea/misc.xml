@@ -22,7 +22,7 @@
         <entry key="app/src/main/res/layout/fragment_collected_data.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.2608695652173913" />
         <entry key="app/src/main/res/layout/fragment_image.xml" value="0.20153985507246377" />
-        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.2608695652173913" />
         <entry key="app/src/main/res/layout/image_listview.xml" value="0.2164855072463768" />
         <entry key="app/src/main/res/layout/listpage_collecteddata.xml" value="0.1" />

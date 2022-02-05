@@ -3,7 +3,6 @@ package com.example.homeassistantoff.pager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -23,7 +22,7 @@ class ViewPagerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_pager)
 
-        collectedData = intent?.getParcelableExtra(Constants.COLLECTEDDATA_SELECTED)!!
+        collectedData = intent?.getParcelableExtra(Constants.COLLECTED_DATA_SELECTED)!!
 
         var listFiles: List<Files> = collectedData?.movement?.files?.filterNotNull()!!
 
@@ -40,7 +39,7 @@ class ViewPagerActivity : AppCompatActivity() {
         }
     }
 
-    private inner class ScreenSlidePagerAdapter internal constructor(fm: FragmentManager?, files: List<Files>) :
+    private inner class ScreenSlidePagerAdapter(fm: FragmentManager?, files: List<Files>) :
         FragmentStatePagerAdapter(fm!!) {
 
         private val mFiles: List<Files> = files

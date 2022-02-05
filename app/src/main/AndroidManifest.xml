@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HARequest.SettingsActivity"
+            android:name=".Settings.SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity" />
