@@ -17,9 +17,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.preference.PreferenceManager
 import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
 import com.example.homeassistantoff.Settings.SettingsActivity
 import com.example.homeassistantoff.databinding.ActivityMainBinding
+import com.example.homeassistantoff.utils.Constants.APP_REQUEST_SETTING
 import com.example.homeassistantoff.utils.Constants.OFFLINE
 import com.example.homeassistantoff.utils.Constants.ONLINE
 
@@ -74,17 +76,26 @@ class MainActivity : AppCompatActivity() {
     // !!! REQUEST HOME ASSISTANT !!!
 
     private fun setupHARequestAlarm() {
-        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
-        val intent = Intent(this, HARequestAlarmReceiver::class.java)
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val appRequestActive = sharedPreferences.getBoolean(APP_REQUEST_SETTING, false)
 
-        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        Log.d("Requests", appRequestActive.toString())
 
-        alarmManager.setInexactRepeating(
-            AlarmManager.ELAPSED_REALTIME_WAKEUP,
-            SystemClock.elapsedRealtime(),
-            (1000 * 5).toLong(), // each 5 sec
-            pendingIntent)
+        if (appRequestActive) {
+            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+            val intent = Intent(this, HARequestAlarmReceiver::class.java)
+
+            val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+
+            alarmManager.setInexactRepeating(
+                AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime(),
+                (1000 * 5).toLong(), // each 5 sec
+                pendingIntent
+            )
+        }
     }
 
     private fun registerReceiver() {

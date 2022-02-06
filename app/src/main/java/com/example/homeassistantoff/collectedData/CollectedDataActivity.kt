@@ -124,7 +124,7 @@ class CollectedDataActivity : AppCompatActivity() {
 
             // Gas and Smoke
             val gasSmokeTextView = rowList.findViewById<TextView>(R.id.gas_smoke)
-            gasSmokeTextView.text = row.gas_smoke.toString() + " "+ R.string.ppm
+            gasSmokeTextView.text = row.gas_smoke.toString() + " "+ mContext.getText(R.string.ppm)
 
             // Movement
             val movementTextView = rowList.findViewById<TextView>(R.id.movement)

@@ -3,8 +3,8 @@ package com.example.homeassistantoff.HARequest
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import android.util.Log
+import androidx.preference.PreferenceManager
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
@@ -20,10 +20,14 @@ open class HARequestAlarmReceiver() : BroadcastReceiver() {
 
         Log.d("Alarme", "acionou o alarme")
 
-        val queue = Volley.newRequestQueue(context)
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        val url = sharedPreferences.getString("urlHomeAssistant", "")
+        val token = sharedPreferences.getString("longLiveToken", "")
 
-        val url = "http://10.0.0.111:8123/api/"
-        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwNjA3YTYzZThkMGE0MTM1ODAwNGRiYjI4ODNlNGQ5ZCIsImlhdCI6MTY0MzU2NTg0MiwiZXhwIjoxOTU4OTI1ODQyfQ.BF1c2dZyjOypgUBxF8p6Xq77FTFKTf38yeNdAkFL_Tc"
+        Log.d("Alarme", "URL SETADA: $url")
+        Log.d("Alarme", "TOKEN SETADA: $token")
+
+        val queue = Volley.newRequestQueue(context)
 
         val accessTokenRequest: JsonObjectRequest = object : JsonObjectRequest(
             Method.GET, url, JSONObject(),

@@ -7,4 +7,6 @@ object Constants {
     const val CREATED_DATE_TIME = "createdDateTime"
     const val ONLINE = "online"
     const val OFFLINE = "offline"
+
+    const val APP_REQUEST_SETTING = "app_request_active"
 }

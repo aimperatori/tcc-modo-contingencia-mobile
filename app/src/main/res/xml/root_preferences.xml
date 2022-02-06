@@ -3,17 +3,18 @@
     <PreferenceCategory app:title="Home Assistant">
 
         <SwitchPreferenceCompat
-            app:key="active"
-            app:title="@string/app_request_config" />
+            app:key="app_request_active"
+            app:title="@string/app_request_config"
+            app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            app:dependency="active"
+            app:dependency="app_request_active"
             app:key="urlHomeAssistant"
             app:title="@string/url"
             app:useSimpleSummaryProvider="true" />
 
         <EditTextPreference
-            app:dependency="active"
+            app:dependency="app_request_active"
             app:key="longLiveToken"
             app:title="@string/long_live_token"
             app:useSimpleSummaryProvider="true" />
