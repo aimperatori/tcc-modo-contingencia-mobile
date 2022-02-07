@@ -1,15 +1,12 @@
 package com.example.homeassistantoff
 
-import android.app.AlarmManager
-import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.os.SystemClock
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +18,7 @@ import androidx.preference.PreferenceManager
 import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
 import com.example.homeassistantoff.Settings.SettingsActivity
 import com.example.homeassistantoff.databinding.ActivityMainBinding
-import com.example.homeassistantoff.utils.Constants.APP_REQUEST_SETTING
+import com.example.homeassistantoff.utils.Constants
 import com.example.homeassistantoff.utils.Constants.OFFLINE
 import com.example.homeassistantoff.utils.Constants.ONLINE
 
@@ -47,8 +44,27 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
+        updateDesign()
+
         setupHARequestAlarm()
-        registerReceiver()
+    }
+
+    private fun updateDesign() {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val appRequestActive = sharedPreferences.getBoolean(Constants.APP_REQUEST_SETTING, false)
+
+        if (!appRequestActive) {
+
+            var statusTextView = findViewById<TextView>(R.id.statusText)
+            if (statusTextView != null) {
+                statusTextView.text = "Verificação desabilitada."
+            }
+            val statusImg = findViewById<ImageView>(R.id.statusImg)
+            if (statusImg != null) {
+                statusImg.visibility = View.INVISIBLE
+
+            }
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -77,28 +93,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupHARequestAlarm() {
 
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val appRequestActive = sharedPreferences.getBoolean(APP_REQUEST_SETTING, false)
+        HARequestAlarmReceiver.manageHARequests(this)
 
-        Log.d("Requests", appRequestActive.toString())
-
-        if (appRequestActive) {
-            val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
-
-            val intent = Intent(this, HARequestAlarmReceiver::class.java)
-
-            val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
-
-            alarmManager.setInexactRepeating(
-                AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                SystemClock.elapsedRealtime(),
-                (1000 * 5).toLong(), // each 5 sec
-                pendingIntent
-            )
-        }
-    }
-
-    private fun registerReceiver() {
         haRequest = object : HARequestAlarmReceiver() {
             override fun onReceive(context: Context?, intent: Intent?) {
                 updateUI(getText(R.string.text_home_assistant_online), true)
@@ -116,17 +112,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(text: CharSequence?, status: Boolean) {
-        var statusTextView = findViewById<TextView>(R.id.statusText)
-        if (statusTextView != null) {
-            statusTextView.text = text
-        }
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val appRequestActive = sharedPreferences.getBoolean(Constants.APP_REQUEST_SETTING, false)
 
-        val statusImg = findViewById<ImageView>(R.id.statusImg)
-        if (statusImg != null) {
-            if (status) {
-                statusImg.setImageResource(R.mipmap.online)
-            } else {
-                statusImg.setImageResource(R.mipmap.offline)
+        if (appRequestActive) {
+            var statusTextView = findViewById<TextView>(R.id.statusText)
+            if (statusTextView != null) {
+                statusTextView.text = text
+            }
+
+            val statusImg = findViewById<ImageView>(R.id.statusImg)
+            if (statusImg != null) {
+                if (status) {
+                    statusImg.setImageResource(R.mipmap.online)
+                } else {
+                    statusImg.setImageResource(R.mipmap.offline)
+                }
             }
         }
     }

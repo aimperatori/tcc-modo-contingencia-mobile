@@ -7,10 +7,11 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
 import com.example.homeassistantoff.R
 import com.example.homeassistantoff.utils.Constants.APP_REQUEST_SETTING
 
-class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
+class SettingsActivity : AppCompatActivity(), OnSharedPreferenceChangeListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +26,20 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
 
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        val listener = OnSharedPreferenceChangeListener { prefs, key ->
+        val listener = OnSharedPreferenceChangeListener { _, key ->
             Log.d("Settings", "Settings mudeou")
             if (key == APP_REQUEST_SETTING) {
-                //todo criar logica para habilitar ou desabilitar requisições para o home assistant
-                Log.d("Settings", "Preference value was updated to: " + prefs.getBoolean(key, false))
+
+                HARequestAlarmReceiver.manageHARequests(this)
+
+//                val requestActive = prefs.getBoolean(key, false)
+//
+//                if (requestActive) {
+//                    Log.d("Settings", "Habilitou")
+//                }
+//                else {
+//                    Log.d("Settings", "Desabilitou")
+//                }
             }
         }
         prefs.registerOnSharedPreferenceChangeListener(listener)
@@ -43,10 +53,7 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
 
-        Log.d("Settings", "Settings mudeou")
+        Log.d("Settings", "Settings changed")
 
-        if (key == APP_REQUEST_SETTING) {
-            Log.d("Settings", "Preference value was updated to: " + sharedPreferences.getString(key, ""))
-        }
     }
 }
