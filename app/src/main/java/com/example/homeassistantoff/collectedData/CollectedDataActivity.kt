@@ -128,7 +128,7 @@ class CollectedDataActivity : AppCompatActivity() {
 
             // Movement
             val movementTextView = rowList.findViewById<TextView>(R.id.movement)
-            movementTextView.text = Helper.booleanToNoYes(row.movement?.movDetected!!)
+            movementTextView.text = Helper.booleanToNoYes(row.movement?.movDetected!!, mContext)
 
             return rowList
         }

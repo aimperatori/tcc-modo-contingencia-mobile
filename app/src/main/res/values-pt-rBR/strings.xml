@@ -11,4 +11,7 @@
     <string name="gas_smoke">Gás e fumaça</string>
     <string name="movement">Movimento</string>
     <string name="app_request_config">Requisições pelo app</string>
+    <string name="Yes">Sim</string>
+    <string name="No">Não</string>
+    <string name="collected_data_view">Visualizar dados coletados</string>
 </resources>
