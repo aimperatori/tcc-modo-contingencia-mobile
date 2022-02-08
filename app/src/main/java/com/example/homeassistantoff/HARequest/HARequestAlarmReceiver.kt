@@ -13,6 +13,7 @@ import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.example.homeassistantoff.Messaging.Notification
 import com.example.homeassistantoff.utils.Constants
 import com.example.homeassistantoff.utils.Constants.OFFLINE
 import com.example.homeassistantoff.utils.Constants.ONLINE
@@ -47,6 +48,8 @@ open class HARequestAlarmReceiver() : BroadcastReceiver() {
 
             }, Response.ErrorListener { error ->
                 Log.d("Alarme", "Error: %s".format(error.toString()))
+
+                Notification.sendNotification(context!!, "Home assistant OFF", "Atenção sua intancia do home assistant está offline")
 
                 val intent = Intent(OFFLINE)
 //                val extras = Bundle()
