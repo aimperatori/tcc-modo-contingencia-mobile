@@ -45,6 +45,9 @@
     <string name="app_request_config">Request from app</string>
     <string name="url" translatable="false">URL</string>
     <string name="long_live_token" translatable="false">Long-live Token</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="collected_data_view">View collected data</string>
 
 
 </resources>
