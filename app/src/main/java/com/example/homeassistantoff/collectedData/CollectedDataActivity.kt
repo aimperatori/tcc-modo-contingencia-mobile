@@ -116,15 +116,15 @@ class CollectedDataActivity : AppCompatActivity() {
 
             // Temp
             val tempTextView = rowList.findViewById<TextView>(R.id.temp)
-            tempTextView.text = row.temp.toString() + " ºC"
+            tempTextView.text = "${row.temp.toString()} ºC"
 
             // Humidity
             val humidityTextView = rowList.findViewById<TextView>(R.id.humidity)
-            humidityTextView.text = row.humidity.toString() + " %"
+            humidityTextView.text = "${row.humidity.toString()} %"
 
             // Gas and Smoke
             val gasSmokeTextView = rowList.findViewById<TextView>(R.id.gas_smoke)
-            gasSmokeTextView.text = row.gas_smoke.toString() + " "+ mContext.getText(R.string.ppm)
+            gasSmokeTextView.text = "${row.gas_smoke.toString()} ${mContext.getText(R.string.ppm)}"
 
             // Movement
             val movementTextView = rowList.findViewById<TextView>(R.id.movement)

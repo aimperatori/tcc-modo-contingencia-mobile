@@ -14,4 +14,8 @@
     <string name="Yes">Sim</string>
     <string name="No">Não</string>
     <string name="collected_data_view">Visualizar dados coletados</string>
+    <string name="important_notifications">Notificações importantes</string>
+    <string name="disabled_ha_request">Verificação desabilitada.</string>
+    <string name="ha_instance_offline">Instância do Home Assistant offline</string>
+    <string name="ha_instance_off_description">Verifique os últimos dados coletados para saber possíveis causas.</string>
 </resources>

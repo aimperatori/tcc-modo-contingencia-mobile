@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
 import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
+import com.example.homeassistantoff.Messaging.Notification
 import com.example.homeassistantoff.Settings.SettingsActivity
 import com.example.homeassistantoff.databinding.ActivityMainBinding
 import com.example.homeassistantoff.utils.Constants
@@ -57,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
             var statusTextView = findViewById<TextView>(R.id.statusText)
             if (statusTextView != null) {
-                statusTextView.text = "Verificação desabilitada."
+                statusTextView.text = getString(R.string.disabled_ha_request)
             }
             val statusImg = findViewById<ImageView>(R.id.statusImg)
             if (statusImg != null) {
@@ -89,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // !!! REQUEST HOME ASSISTANT !!!
+    // ### REQUEST HOME ASSISTANT ###
 
     private fun setupHARequestAlarm() {
 

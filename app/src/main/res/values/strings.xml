@@ -4,8 +4,6 @@
     <string name="title_activity_settings">Settings</string>
     <string name="messages_header">Messages</string>
 
-
-
     <!-- Preference Titles -->
     <string name="sync_header" translatable="false">Sync</string>
 
@@ -48,6 +46,10 @@
     <string name="Yes">Yes</string>
     <string name="No">No</string>
     <string name="collected_data_view">View collected data</string>
+    <string name="important_notifications">Important notifications</string>
+    <string name="disabled_ha_request">Disabled request.</string>
+    <string name="ha_instance_offline">Home Assistant instance offline</string>
+    <string name="ha_instance_off_description">Check the lastest data for possible causes.</string>
 
 
 </resources>

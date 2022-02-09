@@ -27,19 +27,9 @@ class SettingsActivity : AppCompatActivity(), OnSharedPreferenceChangeListener {
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(this);
         val listener = OnSharedPreferenceChangeListener { _, key ->
-            Log.d("Settings", "Settings mudeou")
+            Log.d("Settings", "Settings mudou")
             if (key == APP_REQUEST_SETTING) {
-
                 HARequestAlarmReceiver.manageHARequests(this)
-
-//                val requestActive = prefs.getBoolean(key, false)
-//
-//                if (requestActive) {
-//                    Log.d("Settings", "Habilitou")
-//                }
-//                else {
-//                    Log.d("Settings", "Desabilitou")
-//                }
             }
         }
         prefs.registerOnSharedPreferenceChangeListener(listener)
@@ -52,8 +42,6 @@ class SettingsActivity : AppCompatActivity(), OnSharedPreferenceChangeListener {
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
-
         Log.d("Settings", "Settings changed")
-
     }
 }

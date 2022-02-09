@@ -31,7 +31,7 @@ class ViewPagerVideoFragment : Fragment() {
         if (asset != null) {
             val videoView: VideoView = rootView.findViewById(R.id.videoView)
 
-            var mediaController = MediaController(activity)
+            val mediaController = MediaController(activity)
             mediaController.setAnchorView(videoView)
 
             videoView.setMediaController(mediaController)
