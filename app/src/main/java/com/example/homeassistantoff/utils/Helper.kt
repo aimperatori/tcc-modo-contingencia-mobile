@@ -1,5 +1,7 @@
 package com.example.homeassistantoff.utils
 
+import android.content.Context
+import com.example.homeassistantoff.R
 import java.text.SimpleDateFormat
 
 class Helper {
@@ -11,11 +13,11 @@ class Helper {
             return formatter.format(parser.parse(_dateTime))
         }
 
-        fun booleanToNoYes(_bool : Boolean) : String {
+        fun booleanToNoYes(_bool : Boolean, context: Context) : String {
             return if (_bool) {
-                "Sim"
+                context.getString(R.string.Yes)
             } else {
-                "Não"
+                context.getString(R.string.No)
             }
         }
 

@@ -1,5 +1,55 @@
 <resources>
-    <string name="app_name">HomeAssistantOff</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name" translatable="false">Home Assistant Off</string>
+    <string name="title_activity_main" translatable="false">Home Assistant Off</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="messages_header">Messages</string>
+
+    <!-- Preference Titles -->
+    <string name="sync_header" translatable="false">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title" translatable="false">Your signature</string>
+    <string name="reply_title" translatable="false">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title" translatable="false">Sync email periodically</string>
+    <string name="attachment_title" translatable="false">Download incoming attachments</string>
+    <string name="attachment_summary_on" translatable="false">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off" translatable="false">Only download attachments when manually requested</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
+
+    <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
+    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
+
+    <string name="action_sign_in" translatable="false">a</string>
+    <string name="action_sign_in_short" translatable="false">a</string>
+    <string name="prompt_password" translatable="false">a</string>
+    <string name="prompt_email" translatable="false">a</string>
+    <string name="ppm" translatable="false">ppm</string>
+    <string name="text_home_assistant_offline">Offline</string>
+    <string name="text_home_assistant_online">Online !!!</string>
+    <string name="loading_home_assistant_required">Loading...</string>
+    <string name="created_date_time">Created date time</string>
+    <string name="null_date" translatable="false">0000-00-00 00:00:00</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="gas_smoke">Gas and smoke</string>
+    <string name="movement">Movement</string>
+    <string name="app_request_config">Request from app</string>
+    <string name="url" translatable="false">URL</string>
+    <string name="long_live_token" translatable="false">Long-live Token</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="collected_data_view">View collected data</string>
+    <string name="important_notifications">Important notifications</string>
+    <string name="disabled_ha_request">Disabled request.</string>
+    <string name="ha_instance_offline">Home Assistant instance offline</string>
+    <string name="ha_instance_off_description">Check the lastest data for possible causes.</string>
+
+
 </resources>

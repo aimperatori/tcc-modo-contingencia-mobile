@@ -11,8 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="15dp"
-        android:text="Data e hora da criação"
+        android:text="@string/created_date_time"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +21,7 @@
         android:id="@+id/createdDateTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0000-00-00 00:00:00"
+        android:text="@string/null_date"
         app:layout_constraintStart_toStartOf="@+id/createdDateTimeText"
         app:layout_constraintTop_toBottomOf="@+id/createdDateTimeText" />
 
@@ -30,9 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Temperatura"
+        android:layout_marginTop="35dp"
+        android:text="@string/temperature"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/createdDateTime" />
 
@@ -49,12 +51,13 @@
         android:id="@+id/humidityTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Umidade"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/humidity"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/temp" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tempTxt"
+        app:layout_constraintTop_toBottomOf="@+id/createdDateTimeText" />
 
     <TextView
         android:id="@+id/humidity"
@@ -70,16 +73,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Gás e fumaça"
+        android:layout_marginTop="35dp"
+        android:text="@string/gas_smoke"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/humidity" />
+        app:layout_constraintTop_toBottomOf="@+id/tempTxt" />
 
     <TextView
         android:id="@+id/gas_smoke"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
         android:text="0"
         app:layout_constraintStart_toStartOf="@+id/gas_smokeTxt"
         app:layout_constraintTop_toBottomOf="@+id/gas_smokeTxt" />
@@ -89,12 +94,13 @@
         android:id="@+id/movementTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Movimento"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/movement"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gas_smoke" />
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/gas_smokeTxt"
+        app:layout_constraintTop_toBottomOf="@+id/humidityTxt" />
 
     <TextView
         android:id="@+id/movement"

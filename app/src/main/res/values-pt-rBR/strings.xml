@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_activity_settings">Configurações</string>
+    <string name="messages_header">Mensagens</string>
+    <string name="text_home_assistant_offline">Offline</string>
+    <string name="text_home_assistant_online">Online !!!</string>
+    <string name="loading_home_assistant_required">Carregando...</string>
+    <string name="created_date_time">Data e hora da criação</string>
+    <string name="temperature">Temperatura</string>
+    <string name="humidity">Umidade</string>
+    <string name="gas_smoke">Gás e fumaça</string>
+    <string name="movement">Movimento</string>
+    <string name="app_request_config">Requisições pelo app</string>
+    <string name="Yes">Sim</string>
+    <string name="No">Não</string>
+    <string name="collected_data_view">Visualizar dados coletados</string>
+    <string name="important_notifications">Notificações importantes</string>
+    <string name="disabled_ha_request">Verificação desabilitada.</string>
+    <string name="ha_instance_offline">Instância do Home Assistant offline</string>
+    <string name="ha_instance_off_description">Verifique os últimos dados coletados para saber possíveis causas.</string>
+</resources>

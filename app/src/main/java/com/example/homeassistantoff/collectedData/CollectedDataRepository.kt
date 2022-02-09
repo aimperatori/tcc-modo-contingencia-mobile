@@ -6,12 +6,13 @@ import kotlinx.coroutines.tasks.await
 import com.example.homeassistantoff.data.CollectedData
 import com.example.homeassistantoff.data.FirebaseCallback
 import com.example.homeassistantoff.data.Response
-import com.example.homeassistantoff.utils.Constants.COLLECTEDDATA_REF
+import com.example.homeassistantoff.utils.Constants.COLLECTED_DATA_REF
+import com.example.homeassistantoff.utils.Constants.CREATED_DATE_TIME
 import com.google.firebase.database.*
 
 class CollectedDataRepository(
     private val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference,
-    private val collectedDataRef: Query = rootRef.child(COLLECTEDDATA_REF).orderByChild("createdDateTime"),
+    private val collectedDataRef: Query = rootRef.child(COLLECTED_DATA_REF).orderByChild(CREATED_DATE_TIME),
 ) {
 
     fun getResponseOnDataChange(callback: FirebaseCallback) {

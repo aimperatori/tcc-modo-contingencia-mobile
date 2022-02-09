@@ -1,55 +1,136 @@
 package com.example.homeassistantoff
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.Toast
-import com.google.firebase.ktx.Firebase
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.ktx.messaging
+import android.content.Context
 import android.content.Intent
-import com.example.homeassistantoff.collectedData.CollectedDataActivity
+import android.content.IntentFilter
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.preference.PreferenceManager
+import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
+import com.example.homeassistantoff.Messaging.Notification
+import com.example.homeassistantoff.Settings.SettingsActivity
+import com.example.homeassistantoff.databinding.ActivityMainBinding
+import com.example.homeassistantoff.utils.Constants
+import com.example.homeassistantoff.utils.Constants.OFFLINE
+import com.example.homeassistantoff.utils.Constants.ONLINE
 
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityMainBinding
+
+    private lateinit var haRequest: HARequestAlarmReceiver
+    private lateinit var haRequestOff: HARequestAlarmReceiver
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val logTokenBtn = findViewById<Button>(R.id.logTokenBtn)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        logTokenBtn.setOnClickListener {
-            // Get token
-            // [START log_reg_token]
-            Firebase.messaging.getToken().addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                    return@OnCompleteListener
-                }
+        setSupportActionBar(binding.toolbar)
 
-                // Get new FCM registration token
-                val token = task.result
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
-                // Log and toast
-                val msg = token.toString()
-                Log.d(TAG, msg)
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-            })
-            // [END log_reg_token]
-        }
+        updateDesign()
 
-        val collectedDataBtn = findViewById<Button>(R.id.collectedDataBtn)
+        setupHARequestAlarm()
+    }
 
-        collectedDataBtn.setOnClickListener {
-            val intent = Intent(this, CollectedDataActivity::class.java)
-            startActivity(intent)
+    private fun updateDesign() {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val appRequestActive = sharedPreferences.getBoolean(Constants.APP_REQUEST_SETTING, false)
+
+        if (!appRequestActive) {
+
+            var statusTextView = findViewById<TextView>(R.id.statusText)
+            if (statusTextView != null) {
+                statusTextView.text = getString(R.string.disabled_ha_request)
+            }
+            val statusImg = findViewById<ImageView>(R.id.statusImg)
+            if (statusImg != null) {
+                statusImg.visibility = View.INVISIBLE
+
+            }
         }
     }
 
-    companion object {
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
+    }
 
-        private const val TAG = "MainActivity"
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.settings -> {
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    // ### REQUEST HOME ASSISTANT ###
+
+    private fun setupHARequestAlarm() {
+
+        HARequestAlarmReceiver.manageHARequests(this)
+
+        haRequest = object : HARequestAlarmReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                updateUI(getText(R.string.text_home_assistant_online), true)
+            }
+        }
+        registerReceiver(haRequest, IntentFilter(ONLINE))
+
+
+        haRequestOff = object : HARequestAlarmReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                updateUI(getText(R.string.text_home_assistant_offline), false)
+            }
+        }
+        registerReceiver(haRequestOff, IntentFilter(OFFLINE))
+    }
+
+    private fun updateUI(text: CharSequence?, status: Boolean) {
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val appRequestActive = sharedPreferences.getBoolean(Constants.APP_REQUEST_SETTING, false)
+
+        if (appRequestActive) {
+            var statusTextView = findViewById<TextView>(R.id.statusText)
+            if (statusTextView != null) {
+                statusTextView.text = text
+            }
+
+            val statusImg = findViewById<ImageView>(R.id.statusImg)
+            if (statusImg != null) {
+                if (status) {
+                    statusImg.setImageResource(R.mipmap.online)
+                } else {
+                    statusImg.setImageResource(R.mipmap.offline)
+                }
+            }
+        }
     }
 }

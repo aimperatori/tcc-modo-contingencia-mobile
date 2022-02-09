@@ -33,7 +33,6 @@ class ViewPagerImageFragment : Fragment() {
         }
         if (asset != null) {
             val imageView: SubsamplingScaleImageView = rootView.findViewById(R.id.imageView)
-//            imageView.setImage(ImageSource.asset(asset!!))
 
             Glide.with(imageView)
                 .asBitmap()

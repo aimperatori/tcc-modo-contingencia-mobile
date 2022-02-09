@@ -13,7 +13,7 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import android.graphics.BitmapFactory
 import android.net.Uri
-import com.example.homeassistantoff.MainActivity
+import com.example.homeassistantoff.MainActivity_old
 import com.example.homeassistantoff.R
 import java.net.URL
 
@@ -64,7 +64,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendNotification(notification: RemoteMessage.Notification?) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity_old::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
             PendingIntent.FLAG_ONE_SHOT)

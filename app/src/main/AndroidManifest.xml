@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.homeassistantoff">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeAssistantOff">
-
-        <activity
-            android:name=".pager.ViewPagerActivity"
-            android:parentActivityName=".collectedData.CollectedDataActivity"
-            android:exported="true" />
-        <activity
-            android:name=".collectedData.CollectedDataActivity"
-            android:parentActivityName=".MainActivity"
-            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.HomeAssistantOff.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".pager.ViewPagerActivity"
+            android:exported="true"
+            android:parentActivityName=".collectedData.CollectedDataActivity" />
+        <activity
+            android:name=".collectedData.CollectedDataActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
 
         <service
             android:name=".Messaging.MyFirebaseMessagingService"
@@ -35,6 +42,9 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <receiver android:name=".HARequest.HARequestAlarmReceiver"
+            tools:ignore="Instantiatable" />
     </application>
 
 </manifest>

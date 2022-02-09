@@ -1,0 +1,47 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Home Assistant">
+
+        <SwitchPreferenceCompat
+            app:key="app_request_active"
+            app:title="@string/app_request_config"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:dependency="app_request_active"
+            app:key="urlHomeAssistant"
+            app:title="@string/url"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:dependency="app_request_active"
+            app:key="longLiveToken"
+            app:title="@string/long_live_token"
+            app:useSimpleSummaryProvider="true" />
+
+<!--        <ListPreference-->
+<!--            app:defaultValue="reply"-->
+<!--            app:entries="@array/reply_entries"-->
+<!--            app:entryValues="@array/reply_values"-->
+<!--            app:key="reply"-->
+<!--            app:title="@string/reply_title"-->
+<!--            app:useSimpleSummaryProvider="true" />-->
+
+    </PreferenceCategory>
+
+<!--    <PreferenceCategory app:title="@string/sync_header">-->
+
+<!--        <SwitchPreferenceCompat-->
+<!--            app:key="sync"-->
+<!--            app:title="@string/sync_title" />-->
+
+<!--        <SwitchPreferenceCompat-->
+<!--            app:dependency="sync"-->
+<!--            app:key="attachment"-->
+<!--            app:summaryOff="@string/attachment_summary_off"-->
+<!--            app:summaryOn="@string/attachment_summary_on"-->
+<!--            app:title="@string/attachment_title" />-->
+
+<!--    </PreferenceCategory>-->
+
+</PreferenceScreen>
