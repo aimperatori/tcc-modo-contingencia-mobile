@@ -29,11 +29,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         Log.d(TAG, "From: ${remoteMessage.from}")
 
-        this.sendNotification(remoteMessage.notification)
+//        this.sendNotification(remoteMessage.notification)
+        Notification.instanceOff(this)
+
 
         remoteMessage.notification?.let {
             Log.d(TAG, "Message Notification Body: ${it.body}")
         }
+    }
+
+    override fun onDeletedMessages() {
+        super.onDeletedMessages()
+
+        Log.d(TAG, "Message Notification DELETE")
     }
 
     /**

@@ -2,8 +2,8 @@
 <resources>
     <string name="title_activity_settings">Configurações</string>
     <string name="messages_header">Mensagens</string>
-    <string name="text_home_assistant_offline">Offline</string>
-    <string name="text_home_assistant_online">Online !!!</string>
+    <string name="text_home_assistant_offline">Instância do Home Assistant Offline!</string>
+    <string name="text_home_assistant_online">Instância do Home Assistant Online!</string>
     <string name="loading_home_assistant_required">Carregando...</string>
     <string name="created_date_time">Data e hora da criação</string>
     <string name="temperature">Temperatura</string>

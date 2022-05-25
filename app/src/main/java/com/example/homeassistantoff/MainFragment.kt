@@ -29,6 +29,25 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_collectedDataActivity)
         }
 
+        binding.movementBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_movementActivity)
+        }
+
+        binding.rangedImagesBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_rangedImagesActivity)
+        }
+
+        binding.temperatureBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_temperatureActivity)
+        }
+
+        binding.humidityBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_humidityActivity)
+        }
+
+        binding.gasSmokeBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_gasSmokeActivity)
+        }
     }
 
     override fun onDestroyView() {

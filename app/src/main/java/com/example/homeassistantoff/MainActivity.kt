@@ -4,12 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,6 +25,9 @@ import com.example.homeassistantoff.databinding.ActivityMainBinding
 import com.example.homeassistantoff.utils.Constants
 import com.example.homeassistantoff.utils.Constants.OFFLINE
 import com.example.homeassistantoff.utils.Constants.ONLINE
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +50,29 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        //
+        var logToken = findViewById<Button>(R.id.logToken)
+        logToken.setOnClickListener {
+            // Get token
+            // [START log_reg_token]
+            Firebase.messaging.token.addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("Token", "Fetching FCM registration token failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new FCM registration token
+                val token = task.result
+
+                // Log and toast
+                val msg = token.toString()
+                Log.d("Token", msg)
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            })
+            // [END log_reg_token]
+        }
+        //
 
         updateDesign()
 

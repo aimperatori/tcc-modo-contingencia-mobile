@@ -5,27 +5,18 @@ import android.os.Parcelable
 
 
 data class CollectedData(
-    var createdDateTime : String? = "",
-    var temp : Int? = 0,
-    var humidity : Int? = 0,
-    var gas_smoke : Int? = 0,
-    var movement : Movement? = null
+    var created : String? = "",
+    var value : String? = "",
 ) : Parcelable {
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),
-        parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readValue(Int::class.java.classLoader) as? Int,
-        parcel.readValue(Movement::class.java.classLoader) as? Movement,
+        parcel.readString(),
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(createdDateTime)
-        parcel.writeValue(temp)
-        parcel.writeValue(humidity)
-        parcel.writeValue(gas_smoke)
-        parcel.writeValue(movement)
+        parcel.writeString(created)
+        parcel.writeValue(value)
     }
 
     override fun describeContents(): Int {

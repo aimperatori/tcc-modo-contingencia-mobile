@@ -7,24 +7,22 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.homeassistantoff.R
-import com.example.homeassistantoff.data.CollectedData
-import com.example.homeassistantoff.data.Files
+import com.example.homeassistantoff.data.Camera
 import com.example.homeassistantoff.utils.Constants
-import com.example.homeassistantoff.utils.Helper
 
 
 class ViewPagerActivity : AppCompatActivity() {
 
     private lateinit var horizontalPager: ViewPager
-    private var collectedData: CollectedData? = null
+    private var camera: Camera? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.view_pager)
 
-        collectedData = intent?.getParcelableExtra(Constants.COLLECTED_DATA_SELECTED)!!
+        camera = intent?.getParcelableExtra(Constants.CAMERA_SELECTED)!!
 
-        var listFiles: List<Files> = collectedData?.movement?.files?.filterNotNull()!!
+        var listFiles: List<String> = camera?.files?.filterNotNull()!!
 
         horizontalPager = findViewById(R.id.horizontal_pager)
         horizontalPager.adapter = ScreenSlidePagerAdapter(supportFragmentManager, listFiles)
@@ -39,25 +37,17 @@ class ViewPagerActivity : AppCompatActivity() {
         }
     }
 
-    private inner class ScreenSlidePagerAdapter(fm: FragmentManager?, files: List<Files>) :
+    private inner class ScreenSlidePagerAdapter(fm: FragmentManager?, files: List<String>) :
         FragmentStatePagerAdapter(fm!!) {
 
-        private val mFiles: List<Files> = files
+        private val mFiles: List<String> = files
 
         override fun getItem(position: Int): Fragment {
 
             lateinit var fragment : Fragment
 
-            if (Helper.isImage(mFiles[position].extension!!))
-            {
-                fragment = ViewPagerImageFragment()
-                fragment.setAsset(mFiles[position].urlFile)
-            }
-            else if (Helper.isVideo(mFiles[position].extension!!))
-            {
-                fragment = ViewPagerVideoFragment()
-                fragment.setAsset(mFiles[position].urlFile)
-            }
+            fragment = ViewPagerImageFragment()
+            fragment.setAsset(mFiles[position])
 
             return fragment
         }

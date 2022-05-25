@@ -11,10 +11,45 @@
         <action
             android:id="@+id/action_mainFragment_to_collectedDataActivity"
             app:destination="@id/collectedDataActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_movementActivity"
+            app:destination="@id/movementActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_rangedImagesActivity"
+            app:destination="@id/rangedImagesActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_temperatureActivity"
+            app:destination="@id/temperatureActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_humidityActivity"
+            app:destination="@id/humidityActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_gasSmokeActivity"
+            app:destination="@id/gasSmokeActivity" />
     </fragment>
     <activity
         android:id="@+id/collectedDataActivity"
         android:name="com.example.homeassistantoff.collectedData.CollectedDataActivity"
         android:label="listpage_collecteddata"
         tools:layout="@layout/listpage_collecteddata" />
+    <activity
+        android:id="@+id/movementActivity"
+        android:name="com.example.homeassistantoff.movement.MovementActivity"
+        android:label="MovementActivity" />
+    <activity
+        android:id="@+id/rangedImagesActivity"
+        android:name="com.example.homeassistantoff.rangedImages.RangedImagesActivity"
+        android:label="RangedImagesActivity" />
+    <activity
+        android:id="@+id/temperatureActivity"
+        android:name="com.example.homeassistantoff.temperature.TemperatureActivity"
+        android:label="TemperatureActivity" />
+    <activity
+        android:id="@+id/humidityActivity"
+        android:name="com.example.homeassistantoff.humidity.HumidityActivity"
+        android:label="HumidityActivity" />
+    <activity
+        android:id="@+id/gasSmokeActivity"
+        android:name="com.example.homeassistantoff.gasSmoke.GasSmokeActivity"
+        android:label="GasSmokeActivity" />
 </navigation>

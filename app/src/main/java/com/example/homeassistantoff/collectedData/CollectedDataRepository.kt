@@ -26,7 +26,7 @@ class CollectedDataRepository(
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w("CollectedDataRepository", "loadPost:onCancelled", error.toException())
+                Log.w("RangedImagesRepository", "loadPost:onCancelled", error.toException())
             }
         })
     }

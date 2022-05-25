@@ -34,6 +34,26 @@
             android:name=".collectedData.CollectedDataActivity"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".movement.MovementActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".rangedImages.RangedImagesActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".temperature.TemperatureActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".humidity.HumidityActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".gasSmoke.GasSmokeActivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
 
         <service
             android:name=".Messaging.MyFirebaseMessagingService"

@@ -90,6 +90,8 @@ open class HARequestAlarmReceiver() : BroadcastReceiver() {
                 Log.d("Alarme", "Cancelou alarme")
 
                 alarmManager.cancel(pendingIntent)
+
+                Notification.instanceOn(context)
             }
         }
     }

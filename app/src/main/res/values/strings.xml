@@ -31,8 +31,8 @@
     <string name="prompt_password" translatable="false">a</string>
     <string name="prompt_email" translatable="false">a</string>
     <string name="ppm" translatable="false">ppm</string>
-    <string name="text_home_assistant_offline">Offline</string>
-    <string name="text_home_assistant_online">Online !!!</string>
+    <string name="text_home_assistant_offline">Home Assistant Instance Offline!</string>
+    <string name="text_home_assistant_online">Home Assistant Instance Online!</string>
     <string name="loading_home_assistant_required">Loading...</string>
     <string name="created_date_time">Created date time</string>
     <string name="null_date" translatable="false">0000-00-00 00:00:00</string>

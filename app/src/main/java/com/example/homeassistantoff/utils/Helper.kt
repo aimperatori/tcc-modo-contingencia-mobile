@@ -3,12 +3,20 @@ package com.example.homeassistantoff.utils
 import android.content.Context
 import com.example.homeassistantoff.R
 import java.text.SimpleDateFormat
+import java.time.OffsetDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class Helper {
     companion object {
         fun formatDateTime(_dateTime: String): String {
             val parser = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            parser.timeZone = TimeZone.getTimeZone("UTC+0")
+
             val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+            formatter.timeZone = TimeZone.getTimeZone("America/Sao_Paulo")
 
             return formatter.format(parser.parse(_dateTime))
         }
