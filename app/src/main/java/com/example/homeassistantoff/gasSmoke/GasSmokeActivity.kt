@@ -18,6 +18,7 @@ import com.example.homeassistantoff.data.Response
 import com.example.homeassistantoff.pager.ViewPagerActivity
 import com.example.homeassistantoff.utils.Constants
 import com.example.homeassistantoff.utils.Helper
+import java.text.SimpleDateFormat
 import java.util.*
 
 class GasSmokeActivity : AppCompatActivity() {
@@ -34,38 +35,38 @@ class GasSmokeActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.collectedData_listView)
 
-        getResponseOnDataChange()
-        //getResponseUsingLiveData()
+//        getResponseOnDataChange()
+        getResponseUsingLiveData()
     }
 
-    private fun getResponseOnDataChange() {
-        viewModel.getResponseOnDataChange(object : FirebaseCallback {
-            override fun onResponse(response: Response) {
-                renderUI(response)
-            }
-        })
-    }
-
-//    private fun getResponseUsingLiveData() {
-//        val myFormat = "yyyy-MM-dd"
-//        val dateFormat = SimpleDateFormat(myFormat)
-//        val dateString = dateFormat.format(myCalendar.time)
-//
-//        viewModel.getResponseUsingLiveData(dateString).observe(this) {
-//            renderUI(it)
-//        }
+//    private fun getResponseOnDataChange() {
+//        viewModel.getResponseOnDataChange(object : FirebaseCallback {
+//            override fun onResponse(response: Response) {
+//                renderUI(response)
+//            }
+//        })
 //    }
+
+    private fun getResponseUsingLiveData() {
+        val myFormat = "yyyy-MM-dd"
+        val dateFormat = SimpleDateFormat(myFormat)
+        val dateString = dateFormat.format(myCalendar.time)
+
+        viewModel.getResponseUsingLiveData(dateString).observe(this) {
+            renderUI(it)
+        }
+    }
 
     private fun renderUI(response: Response) {
 
         listView.adapter = MyCustomAdapter(this, response)
 
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val element = listView.adapter.getItemId(position) // The item that was clicked
-            val intent = Intent(this, ViewPagerActivity::class.java)
-            intent.putExtra(Constants.COLLECTED_DATA_SELECTED, response.collectedData?.get(element.toInt()))
-            startActivity(intent)
-        }
+//        listView.setOnItemClickListener { _, _, position, _ ->
+//            val element = listView.adapter.getItemId(position) // The item that was clicked
+//            val intent = Intent(this, ViewPagerActivity::class.java)
+//            intent.putExtra(Constants.COLLECTED_DATA_SELECTED, response.collectedData?.get(element.toInt()))
+//            startActivity(intent)
+//        }
 
         response.exception?.let { exception ->
             exception.message?.let {
@@ -103,11 +104,11 @@ class GasSmokeActivity : AppCompatActivity() {
 
             // CreatedDateTime
             val createdTextView = rowList.findViewById<TextView>(R.id.gasSmokeCreated)
-            createdTextView.text = Helper.formatDateTime(row?.created!!)
+            createdTextView.text = row?.created
 
             // PPM
             val tempTextView = rowList.findViewById<TextView>(R.id.gasSmoke)
-            tempTextView.text = "${row.value} ppm"
+            tempTextView.text = "${row?.value} ppm"
 
             return rowList
         }

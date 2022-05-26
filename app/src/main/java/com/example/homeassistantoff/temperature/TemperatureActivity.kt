@@ -35,38 +35,31 @@ class TemperatureActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.collectedData_listView)
 
-        getResponseOnDataChange()
-        //getResponseUsingLiveData()
+//        getResponseOnDataChange()
+        getResponseUsingLiveData()
     }
 
-    private fun getResponseOnDataChange() {
-        viewModel.getResponseOnDataChange(object : FirebaseCallback {
-            override fun onResponse(response: Response) {
-                renderUI(response)
-            }
-        })
-    }
-
-//    private fun getResponseUsingLiveData() {
-//        val myFormat = "yyyy-MM-dd"
-//        val dateFormat = SimpleDateFormat(myFormat)
-//        val dateString = dateFormat.format(myCalendar.time)
-//
-//        viewModel.getResponseUsingLiveData(dateString).observe(this) {
-//            renderUI(it)
-//        }
+//    private fun getResponseOnDataChange() {
+//        viewModel.getResponseOnDataChange(object : FirebaseCallback {
+//            override fun onResponse(response: Response) {
+//                renderUI(response)
+//            }
+//        })
 //    }
+
+    private fun getResponseUsingLiveData() {
+        val myFormat = "yyyy-MM-dd"
+        val dateFormat = SimpleDateFormat(myFormat)
+        val dateString = dateFormat.format(myCalendar.time)
+
+        viewModel.getResponseUsingLiveData(dateString).observe(this) {
+            renderUI(it)
+        }
+    }
 
     private fun renderUI(response: Response) {
 
         listView.adapter = MyCustomAdapter(this, response)
-
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val element = listView.adapter.getItemId(position) // The item that was clicked
-            val intent = Intent(this, ViewPagerActivity::class.java)
-            intent.putExtra(Constants.COLLECTED_DATA_SELECTED, response.collectedData?.get(element.toInt()))
-            startActivity(intent)
-        }
 
         response.exception?.let { exception ->
             exception.message?.let {
@@ -104,11 +97,11 @@ class TemperatureActivity : AppCompatActivity() {
 
             // CreatedDateTime
             val createdTextView = rowList.findViewById<TextView>(R.id.temperatureCreated)
-            createdTextView.text = Helper.formatDateTime(row?.created!!)
+            createdTextView.text = row?.created
 
             // Temp
             val tempTextView = rowList.findViewById<TextView>(R.id.temperature)
-            tempTextView.text = "${row.value} ºC"
+            tempTextView.text = "${row?.value} ºC"
 
             return rowList
         }

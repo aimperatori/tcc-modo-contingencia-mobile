@@ -10,12 +10,12 @@ class TemperatureViewModel(
     private val repository: TemperatureRepository = TemperatureRepository()
 ) : ViewModel() {
 
-    fun getResponseOnDataChange(callback: FirebaseCallback) {
-        repository.getResponseOnDataChange(callback)
-    }
-
-//    fun getResponseUsingLiveData(curDate : String) : LiveData<Response> {
-//        return repository.getResponseFromRealtimeDatabaseUsingLiveData(curDate)
+//    fun getResponseOnDataChange(callback: FirebaseCallback) {
+//        repository.getResponseOnDataChange(callback)
 //    }
+
+    fun getResponseUsingLiveData(curDate : String) : LiveData<Response> {
+        return repository.getResponseFromRealtimeDatabaseUsingLiveData(curDate)
+    }
 
 }

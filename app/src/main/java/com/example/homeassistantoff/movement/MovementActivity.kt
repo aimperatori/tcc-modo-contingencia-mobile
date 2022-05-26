@@ -16,11 +16,14 @@ import com.example.homeassistantoff.data.FirebaseCallback
 import com.example.homeassistantoff.data.Response
 import com.example.homeassistantoff.utils.Constants
 import com.example.homeassistantoff.utils.Helper
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MovementActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MovementViewModel
     private lateinit var listView: ListView
+    private val myCalendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +33,25 @@ class MovementActivity : AppCompatActivity() {
 
         listView = findViewById(R.id.collectedData_listView)
 
-        getResponseOnDataChange()
+//        getResponseOnDataChange()
+        getResponseUsingLiveData()
     }
 
-    private fun getResponseOnDataChange() {
-        viewModel.getResponseOnDataChange(object : FirebaseCallback {
-            override fun onResponse(response: Response) {
-                renderUI(response)
-            }
-        })
+//    private fun getResponseOnDataChange() {
+//        viewModel.getResponseOnDataChange(object : FirebaseCallback {
+//            override fun onResponse(response: Response) {
+//                renderUI(response)
+//            }
+//        })
+//    }
+    private fun getResponseUsingLiveData() {
+        val myFormat = "yyyy-MM-dd"
+        val dateFormat = SimpleDateFormat(myFormat)
+        val dateString = dateFormat.format(myCalendar.time)
+
+        viewModel.getResponseUsingLiveData(dateString).observe(this) {
+            renderUI(it)
+        }
     }
 
     private fun renderUI(response: Response) {
@@ -80,7 +93,7 @@ class MovementActivity : AppCompatActivity() {
             val row = mResponse.collectedData?.get(index)
 
             val positionTextView = rowList.findViewById<TextView>(R.id.movement)
-            positionTextView.text = Helper.formatDateTime(row?.created!!)
+            positionTextView.text = row?.created
 
             return rowList
         }
