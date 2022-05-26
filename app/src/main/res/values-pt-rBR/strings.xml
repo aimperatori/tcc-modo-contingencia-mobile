@@ -18,4 +18,20 @@
     <string name="disabled_ha_request">Verificação desabilitada.</string>
     <string name="ha_instance_offline">Instância do Home Assistant offline</string>
     <string name="ha_instance_off_description">Verifique os últimos dados coletados para saber possíveis causas.</string>
+    <string name="get_temperature">Consultar temperatura</string>
+    <string name="get_humidity">Consultar umidade</string>
+    <string name="get_gas_smoke">Consultar gás e fumaça</string>
+    <string name="get_movement">Consultar movimento detectado na entrada</string>
+    <string name="get_detection_images">Consultar imagens da detecção de movimento pela câmera</string>
+    <string name="filter">Filtrar</string>
+    <string name="title_activity_movement">Movimento</string>
+    <string name="title_activity_rangedImages">Imagens da câmera</string>
+    <string name="title_activity_temperature">Temperatura</string>
+    <string name="title_activity_humidity">Umidade</string>
+    <string name="title_activity_gas_smoke">Gás e fumaça</string>
+    <string name="from">De</string>
+    <string name="to">Até</string>
+    <string name="movement_detected_at">Movimento detectado às</string>
+    <string name="date_hour">Data e hora</string>
+    <string name="movement_detection_images">Imagens da detecção de movimento</string>
 </resources>

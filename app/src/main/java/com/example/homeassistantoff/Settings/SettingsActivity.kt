@@ -23,8 +23,7 @@ class SettingsActivity : AppCompatActivity(), OnSharedPreferenceChangeListener {
                 .commit()
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-
+        
         val prefs = PreferenceManager.getDefaultSharedPreferences(this);
         val listener = OnSharedPreferenceChangeListener { _, key ->
             Log.d("Settings", "Settings mudou")

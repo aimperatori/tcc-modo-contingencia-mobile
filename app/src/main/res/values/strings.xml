@@ -49,7 +49,24 @@
     <string name="important_notifications">Important notifications</string>
     <string name="disabled_ha_request">Disabled request.</string>
     <string name="ha_instance_offline">Home Assistant instance offline</string>
-    <string name="ha_instance_off_description">Check the lastest data for possible causes.</string>
+    <string name="ha_instance_off_description">Check the latest data for possible causes.</string>
+    <string name="get_temperature">Get temperature</string>
+    <string name="get_humidity">Get humidity</string>
+    <string name="get_gas_smoke">Get gas and smoke</string>
+    <string name="get_movement">Get movement detected at entrance</string>
+    <string name="get_detection_images">Get motion detection images by camera</string>
+    <string name="filter">Filter</string>
+    <string name="title_activity_movement">Movement</string>
+    <string name="title_activity_rangedImages">Camera images</string>
+    <string name="title_activity_temperature">Temperature</string>
+    <string name="title_activity_humidity">Humidity</string>
+    <string name="title_activity_gas_smoke">Gas and Smoke</string>
+    <string name="movement_detection_images">Movement detection images</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="movement_detected_at">Movement detected at</string>
+    <string name="time_null" translatable="false">00:00:00</string>
+    <string name="date_hour">Date and hour</string>
 
 
 </resources>

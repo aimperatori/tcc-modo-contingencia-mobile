@@ -7,7 +7,6 @@ import com.google.firebase.database.*
 
 class RangedImagesRepository(
     private val rootRef: DatabaseReference = FirebaseDatabase.getInstance().reference,
-
 ) {
 
     fun getResponseFromRealtimeDatabaseUsingLiveData(curDate : String) : MutableLiveData<ResponseFiles> {

@@ -4,14 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -19,15 +16,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
 import com.example.homeassistantoff.HARequest.HARequestAlarmReceiver
-import com.example.homeassistantoff.Messaging.Notification
 import com.example.homeassistantoff.Settings.SettingsActivity
 import com.example.homeassistantoff.databinding.ActivityMainBinding
 import com.example.homeassistantoff.utils.Constants
 import com.example.homeassistantoff.utils.Constants.OFFLINE
 import com.example.homeassistantoff.utils.Constants.ONLINE
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.messaging.ktx.messaging
 
 
 class MainActivity : AppCompatActivity() {
@@ -51,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        //
+        /*
         var logToken = findViewById<Button>(R.id.logToken)
         logToken.setOnClickListener {
             // Get token
@@ -72,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             })
             // [END log_reg_token]
         }
-        //
+        */
 
         updateDesign()
 

@@ -5,83 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/collectedDataBtn"
-        android:layout_width="282dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="232dp"
-        android:text="@string/collected_data_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/gasSmokeBtn"
-        android:layout_width="282dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="420dp"
-        android:text="Visualizar gas e fumaça"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/movementBtn"
-        android:layout_width="282dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="324dp"
-        android:text="Visualizar movimentos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/temperatureBtn"
-        android:layout_width="282dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="628dp"
-        android:text="Visualizar temperatura"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/humidityBtn"
-        android:layout_width="282dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="716dp"
-        android:text="Visualizar umidade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/rangedImagesBtn"
-        android:layout_width="282dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="532dp"
-        android:text="Visualizar imagens"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/logToken"
-        android:layout_width="180dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="136dp"
-        android:text="Log Token"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/statusText"
         android:layout_width="wrap_content"
@@ -106,50 +29,73 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/presence_offline" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<?xml version="1.0" encoding="utf-8"?>-->
-<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    tools:context=".MainFragment">-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Hello World!" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/logTokenBtn"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/textView2"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_width="199dp"-->
-<!--        android:layout_height="76dp"-->
-<!--        android:layout_marginStart="104dp"-->
-<!--        android:layout_marginBottom="44dp"-->
-<!--        android:text="Log token" />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/settingsBtn"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:layout_width="199dp"-->
-<!--        android:layout_height="76dp"-->
-<!--        android:layout_marginStart="104dp"-->
-<!--        android:layout_marginTop="72dp"-->
-<!--        android:text="Configurações" />-->
-
 <!--    <Button-->
 <!--        android:id="@+id/collectedDataBtn"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_width="282dp"-->
+<!--        android:layout_height="66dp"-->
+<!--        android:layout_marginTop="232dp"-->
+<!--        android:text="@string/collected_data_view"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.496"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="112dp"-->
-<!--        android:layout_marginBottom="180dp"-->
-<!--        android:text="Dados coletados" />-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
+<!--    <Button-->
+<!--        android:id="@+id/logToken"-->
+<!--        android:layout_width="180dp"-->
+<!--        android:layout_height="68dp"-->
+<!--        android:layout_marginTop="136dp"-->
+<!--        android:text="Log Token"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.497"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--</FrameLayout>-->
+    <Button
+        android:id="@+id/temperatureBtn"
+        android:layout_width="415dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/get_temperature"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusText" />
+
+    <Button
+        android:id="@+id/humidityBtn"
+        android:layout_width="415dp"
+        android:layout_height="150dp"
+        android:text="@string/get_humidity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/temperatureBtn" />
+
+    <Button
+        android:id="@+id/gasSmokeBtn"
+        android:layout_width="415dp"
+        android:layout_height="150dp"
+        android:text="@string/get_gas_smoke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/humidityBtn" />
+
+    <Button
+        android:id="@+id/movementBtn"
+        android:layout_width="415dp"
+        android:layout_height="150dp"
+        android:text="@string/get_movement"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gasSmokeBtn" />
+
+    <Button
+        android:id="@+id/rangedImagesBtn"
+        android:layout_width="415dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/get_detection_images"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movementBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

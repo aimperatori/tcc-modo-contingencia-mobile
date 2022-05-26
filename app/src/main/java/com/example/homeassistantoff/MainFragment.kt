@@ -25,9 +25,9 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.collectedDataBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_collectedDataActivity)
-        }
+//        binding.collectedDataBtn.setOnClickListener {
+//            findNavController().navigate(R.id.action_mainFragment_to_collectedDataActivity)
+//        }
 
         binding.movementBtn.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_movementActivity)

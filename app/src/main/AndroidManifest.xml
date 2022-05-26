@@ -37,22 +37,27 @@
         <activity
             android:name=".movement.MovementActivity"
             android:exported="true"
+            android:label="@string/title_activity_movement"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".rangedImages.RangedImagesActivity"
             android:exported="true"
+            android:label="@string/title_activity_rangedImages"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".temperature.TemperatureActivity"
             android:exported="true"
+            android:label="@string/title_activity_temperature"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".humidity.HumidityActivity"
             android:exported="true"
+            android:label="@string/title_activity_humidity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".gasSmoke.GasSmokeActivity"
             android:exported="true"
+            android:label="@string/title_activity_gas_smoke"
             android:parentActivityName=".MainActivity" />
 
         <service
